@@ -1,0 +1,237 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+:root {
+--primary-color: #232323;
+--secondary-color: #494949;
+--complimentary-color: #1b1c1b;
+--contrast-color: #ac5a9f;
+--light-color: #c26f4c;
+}
+
+.container {
+    background: #232323;
+    min-height: 100vh;
+    font-family: Montserrat , sans-serif;
+
+}
+
+nav a {
+    font-size: 45px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px;
+    text-align: center;
+}
+
+nav {
+    position: fixed;
+    right: 0vh;
+    z-index: 50;
+    display: flex;
+    height: 100px;
+    padding: 10px;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100vh;
+    background: var(--secondary-color);
+}
+
+section {
+    position: absolute;
+    top:0;
+    height: 100%;
+    width: 0;
+    opacity: 0;
+    transition: all ease-in .5s;
+    display: flex;
+    justify-content: left;
+    align-items: top;
+    
+}
+section h1 {
+    position: absolute;
+    color: #fff;
+    font-size: 50px;
+    text-transform: uppercase;
+    margin-left: 50px;
+    top: 20px;
+}
+
+section:target {
+    opacity: 1;
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+section:target h1 {
+    opacity: 0;
+    animation: 2s fadein forwards .5s;
+
+}
+#first {
+    background: var(--primary-color);
+}
+#second { 
+    background: var(--complimentary-color);
+    text-align: center;
+}
+#third {
+    background: var(--complimentary-color);
+}
+#fourth {
+    background: var(--light-color);
+}
+#website {
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    margin-left: 50px;
+    top: 200px;
+    text-indent: 5px;
+    border: solid var(--secondary-color);
+    border-radius: 10px;
+
+}
+#username {
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    margin-left: 50px;
+    top: 275px;
+    text-indent: 5px;
+    border: solid var(--secondary-color);
+    border-radius: 10px;
+
+}
+#password {
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    margin-left: 50px;
+    top: 350px;
+    text-indent: 5px;
+    border: solid var(--secondary-color);
+    border-radius: 10px;
+}
+#password:focus {
+border-color: #27a360;
+box-shadow: inset 0 0 6px #2fd072;
+}
+
+#enter {
+    position: absolute;
+    height: 50px;
+    width: 145px;
+    margin-left: 50px;
+    top: 455px;
+    border-radius: 10px;
+}
+#reset {
+    position: absolute;
+    height: 50px;
+    width: 145px;
+    margin-left: 205px;
+    top: 455px;
+    border-radius: 10px;
+}
+@keyframes fadein {
+    100% {opacity: 1;}
+}
+
+.logo_img {
+    z-index: 999;
+}
+
+#mytable {
+    position: absolute;
+    border: 2px solid;
+    border-color: #232323;
+    height: 20px;
+    width: 300px;
+    left: 650px;
+    top: 300px;
+    background-color: #ffffff;
+  }
+  th {
+    border: 2px solid;
+    text-align: center;
+    border-color: #232323;
+  }
+  td {
+    border: 2px solid;
+    height: 20px;
+    width: 300px;
+    text-align: center;
+    border-color: #232323;
+  }
+.showbtn {
+    position: absolute;
+    margin-left: 266px;
+    padding: 14px;
+    top: 352px;
+    text-indent: 5px;
+    z-index: 9;
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+
+.text {
+    position: absolute;
+    margin-left: 100px;
+    top: 405px;
+    color: #fff;
+    display: none
+}
+.weak {
+    position: absolute;
+    margin-left: 72px;
+    top: 405px;
+    color: #fff;
+    display: none
+}
+.medium {
+    position: absolute;
+    margin-left: 85px;
+    top: 405px;
+    color: #fff;
+    display: none
+}
+.strong {
+    position: absolute;
+    margin-left: 85px;
+    top: 405px;
+    color: #fff;
+    display: none
+}
+#download {
+    position: absolute;
+    height: 50px;
+    width: 145px;
+    margin-left: 350px;
+    top: 455px;
+    border-radius: 10px;
+}
+#upload {
+    position: absolute;
+    height: 50px;
+    width: 145px;
+    margin-left: 505px;
+    top: 455px;
+    border-radius: 10px;
+}
+
+section p {
+    position: absolute;
+    color: #fff;
+    font-size: 35px;
+    margin-left: 205px;
+    top: 400px;
+    text-transform: uppercase;
+}

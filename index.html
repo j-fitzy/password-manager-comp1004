@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <a href="#first"><i class="fa fa-user"></i></a>
+        <a href="#second"><i class="fa fa-briefcase"></i></a>
+        <a href="#third"><i class="fa fa-file"></i></a>
+        <a href="#fourth"><i class="fa fa-address-card"></i></a>
+    </nav>
+
+    <div class="container">
+        <section id="first">
+            <h1>Home</h1>
+            <p> Welcome to my password manager
+            <br>
+                its purpose is keep a collection of your passwords 
+            <br>
+                alongside the usernames and websites you use them for</p>
+
+        </section>
+
+
+        <section id="second">
+            <h1>Password Submission</h1>
+            <input type="text" id="website" placeholder="Website">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" onkeyup="indicator()" id="password" placeholder="Password">
+            <span class ="showbtn">SHOW</span>
+            <button id="enter" type="button">Enter</button>
+            <button id="reset" type="button">Reset</button>
+                    <div class="weak">YOUR PASSWORD IS TOO WEAK</div>
+                    <div class="medium">YOUR PASSWORD IS MEDIUM</div>
+                    <div class="strong">YOUR PASSWORD IS STRONG</div>
+                    <div class="text">Enter a strong password</div>
+        
+        </section>
+
+
+        <section id="third">
+            <h1>Password Collection</h1>
+            <table id="mytable">
+                <tr>
+                    <th>Website</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                </tr>
+            </table>
+        </section>
+
+
+        <section id="fourth">
+            <h1>File Hub</h1>
+            <button id="download" type="button">Download</button>
+            <button id="upload" type="button">Upload</button>
+            <input type="file" id="fileInput" style="display: none;" accept=".json">
+            <p>click to download or upload </p>
+        </section>
+
+        
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const passwordInput = document.getElementById('password');
+    const weak = document.querySelector(".weak");
+    const medium = document.querySelector(".medium");
+    const strong = document.querySelector(".strong");
+    const text = document.querySelector(".text");
+
+    passwordInput.addEventListener('keyup', function() {
+        const value = passwordInput.value;
+        let hasLetters = /[a-z]/i.test(value);
+        let hasNumbers = /\d/.test(value);
+        let hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+        let countLetters = (value.match(/[a-z]/gi) || []).length;
+
+        // Reset display styles
+        weak.style.display = "none";
+        medium.style.display = "none";
+        strong.style.display = "none";
+        text.style.display = "none";
+
+        if (value === "") {
+            text.style.display = "block"; // Show default text if no input
+        } else if (countLetters < 8 || (!hasNumbers && !hasSpecial)) {
+            weak.style.display = "block"; // Weak: Less than 8 letters or neither a number nor special character
+        } else if (countLetters >= 8 && ((hasNumbers || hasSpecial) && countLetters < 10)) {
+            medium.style.display = "block"; // Medium: 8+ letters and (a number or a special character) but less than 10 letters
+        } else if (countLetters >= 10 && hasNumbers && hasSpecial) {
+            strong.style.display = "block"; // Strong: 10+ letters, a number, and a special character
+        } else {
+            medium.style.display = "block"; // Fallback to medium if other strong conditions not met but still 8+ letters
+        }
+    });
+    const reset = document.getElementById('reset');
+    const enter = document.getElementById('enter');
+    enter.addEventListener('click', myFunction);
+    reset.addEventListener('click', function() {
+        website.value = '';
+        username.value = '';
+        password.value = '';
+    });
+});
+        </script>
+    <script src="application.js"></script>
+</body>
+</html>
